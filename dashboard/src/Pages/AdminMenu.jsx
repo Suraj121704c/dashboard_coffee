@@ -24,6 +24,9 @@ import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import { Products } from "./Products";
+import AccountInfo from "./AccountInfo";
+import Users from "./Users";
+import Add from "./Add";
 
 const AdminMenu = () => {
   const prodRef = useRef();
@@ -54,7 +57,7 @@ const AdminMenu = () => {
           <Box textAlign={"center"} mt={"20px"} mb={"20px"}>
             <Avatar
               size={"xl"}
-              src="https://avatars.githubusercontent.com/u/112753795?v=4"></Avatar>
+              src="https://img.freepik.com/free-vector/coffee-love-foam-with-beans-cartoon-icon-illustration_138676-2575.jpg?w=100"></Avatar>
             <Text>{"Suraj Singh"}</Text>
             <Text color={"pink.700"} fontWeight={"bold"}>
               {"nhb668912@gmail.com"}
@@ -144,7 +147,7 @@ const AdminMenu = () => {
             }}
             border={"none"}
             _focus={{ outline: "none" }}>
-            Account Info
+            Admin Info
           </Tab>
           <Link to={"/"}>
             {" "}
@@ -168,6 +171,15 @@ const AdminMenu = () => {
           </TabPanel>{" "}
           <TabPanel p={0}>
             <Products />
+          </TabPanel>
+          <TabPanel p={0}>
+            <Add />
+          </TabPanel>
+          <TabPanel p={0}>
+            <Users />
+          </TabPanel>
+          <TabPanel p={0}>
+            <AccountInfo />
           </TabPanel>
           {/* <TabPanel p={0}>
             <Products />
@@ -207,7 +219,9 @@ const AdminMenu = () => {
         <Box>
           <Menu bgGradient="linear(to-l,  pink.200, blue.300)">
             <MenuButton>
-              <Avatar src="https://avatars.githubusercontent.com/u/112753795?v=4" name="boy"></Avatar>
+              <Avatar
+                src="https://avatars.githubusercontent.com/u/112753795?v=4"
+                name="boy"></Avatar>
             </MenuButton>
             <MenuList border={"1px solid #27293a"}>
               <MenuItem bgGradient="linear(to-l,  pink.200, blue.300)">
