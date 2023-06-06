@@ -1,17 +1,29 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 export const Products = () => {
-    const [data,setData] = useState([])
+  const [data, setData] = useState([]);
 
-    function fetchData() {
-        axios.get('https://red-crazy-earthworm.cyclic.app/')
-    }
+  function fetchData() {
+    axios
+      .get("https://red-crazy-earthworm.cyclic.app/products/", {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data.product);
+        setData(res.data.product);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
-    useEffect(() => {
-        
-    } , [])
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <Box
       color="pink.600"
@@ -22,6 +34,10 @@ export const Products = () => {
       padding={"20px"}>
       <Heading>Data</Heading>
       <Text color={"#00b5b8"}>List of Data</Text>
+
+     
+      
+
     </Box>
   );
 };

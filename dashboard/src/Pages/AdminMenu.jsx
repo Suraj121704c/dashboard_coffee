@@ -207,7 +207,7 @@ const AdminMenu = () => {
         <Box>
           <Menu bgGradient="linear(to-l,  pink.200, blue.300)">
             <MenuButton>
-              <Avatar src={admin.Image} name={admin.Name}></Avatar>
+              <Avatar src="https://avatars.githubusercontent.com/u/112753795?v=4" name="boy"></Avatar>
             </MenuButton>
             <MenuList border={"1px solid #27293a"}>
               <MenuItem bgGradient="linear(to-l,  pink.200, blue.300)">
