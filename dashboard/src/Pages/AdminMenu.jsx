@@ -1,241 +1,255 @@
-import React, { ReactNode } from 'react';
 import {
-  IconButton,
+  Text,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Button,
   Avatar,
   Box,
-  CloseButton,
-  Flex,
-  HStack,
-  VStack,
-  Icon,
-  useColorModeValue,
-  Link,
-  Drawer,
-  DrawerContent,
-  Text,
-  useDisclosure,
-  BoxProps,
-  FlexProps,
+  Divider,
+  Image,
   Menu,
   MenuButton,
-  MenuDivider,
-  MenuItem,
   MenuList,
-  useToast,
-} from '@chakra-ui/react';
-import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-  FiMenu,
-  FiBell,
-  FiChevronDown,
-} from 'react-icons/fi';
-import { IconType } from 'react-icons';
-import { ReactText } from 'react';
-import { useNavigate } from 'react-router-dom';
+  MenuItem,
+  MenuDivider,
+} from "@chakra-ui/react";
+import { FiLogOut } from "react-icons/fi";
+import { AiFillInfoCircle } from "react-icons/ai";
+import React, { useEffect, useRef, useState } from "react";
+import AdminDrawer from "./AdminDrawer";
+import axios from "axios";
+import { Link, Navigate } from "react-router-dom";
+import Dashboard from "./Dashboard";
 
-interface LinkItemProps {
-  name: string;
-  icon: IconType;
-}
-const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
-];
+const AdminMenu = () => {
+  const prodRef = useRef();
+  const dashboardRef = useRef();
+  const customerRef = useRef();
+  const orderRef = useRef();
+  const accountRef = useRef();
 
-export default function SidebarWithHeader({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [admin, setAdmin] = useState([]);
+
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full">
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
-      </Box>
-    </Box>
-  );
-}
+    <>
+      <Tabs display={"flex"}>
+        <TabList
+          display={{ base: "none", md: "inherit" }}
+          textAlign={"center"}
+          flexDirection={"column"}
+          w={{ md: "30%", lg: "20%" }}
+          padding={"15px"}
+          // backgroundColor={"black"}
+          bgGradient="linear(to-l,  green.200, blue.300)"
+          color={"pink.700"}
+          fontWeight={"bold"}
+          position={"fixed"}
+          top={0}
+          left={0}
+          h={"100vh"}>
+          <Box width={"50%"} m={"auto"} mt={0} mb={0}>
+            {/* <Image alt="logo" src={image}></Image> */}
+          </Box>
+          <Box textAlign={"center"} mt={"20px"} mb={"20px"}>
+            <Avatar
+              size={"xl"}
+              src="https://avatars.githubusercontent.com/u/112753795?v=4"></Avatar>
+            <Text>{"Suraj"}</Text>
+            <Text color={"pink.700"} fontWeight={"bold"}>
+              {"nhb668912@gmail.com"}
+            </Text>
+          </Box>
 
-interface SidebarProps extends BoxProps {
-  onClose: () => void;
-}
-
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
-  return (
-    <Box
-      transition="3s ease"
-      bg={useColorModeValue('white', 'gray.900')}
-      borderRight="1px"
-      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-      w={{ base: 'full', md: 60 }}
-      pos="fixed"
-      h="full"
-      {...rest}>
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Dashboard
-        </Text>
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
-      </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
-      ))}
-    </Box>
-  );
-};
-
-interface NavItemProps extends FlexProps {
-  icon: IconType;
-  children: ReactText;
-}
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
-  return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: 'cyan.400',
-          color: 'white',
-        }}
-        {...rest}>
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: 'white',
+          <Tab
+            ref={dashboardRef}
+            mb={"5px"}
+            borderRadius={"5px"}
+            // transition={"0.8s"}
+            fontWeight={"bold"}
+            _selected={{
+              color: "white",
+              bgGradient: "linear(to-l,  pink.800, blue.600)",
+              transform: "scale(1.05)",
+              transition: "0.2s",
             }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Link>
-  );
-};
+            border={"none"}
+            _focus={{ outline: "none" }}>
+            Dashboard
+          </Tab>
 
-interface MobileProps extends FlexProps {
-  onOpen: () => void;
-}
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
-    const navigate = useNavigate()
-    const toast = useToast()
+          <Tab
+            ref={prodRef}
+            mb={"5px"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            // transition={"0.8s"}
+            _selected={{
+              color: "white",
+              bgGradient: "linear(to-l,  pink.800, blue.600)",
+              transform: "scale(1.05)",
+              transition: "0.2s",
+            }}
+            border={"none"}
+            _focus={{ outline: "none" }}>
+            Products
+          </Tab>
+          <Tab
+            ref={orderRef}
+            mb={"5px"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            // transition={"0.8s"}
+            _selected={{
+              color: "white",
+              bgGradient: "linear(to-l,  pink.800, blue.600)",
+              transform: "scale(1.05)",
+              transition: "0.2s",
+            }}
+            border={"none"}
+            _focus={{ outline: "none" }}>
+            Add New Products
+          </Tab>
+          <Tab
+            ref={customerRef}
+            mb={"5px"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            // transition={"0.8s"}
+            _selected={{
+              color: "white",
+              bgGradient: "linear(to-l,  pink.800, blue.600)",
+              transform: "scale(1.05)",
+              transition: "0.2s",
+            }}
+            border={"none"}
+            _focus={{ outline: "none" }}>
+            Customers
+          </Tab>
 
-  return (
-    <Flex
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 4 }}
-      height="20"
-      alignItems="center"
-      bg={useColorModeValue('white', 'gray.900')}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      justifyContent={{ base: 'space-between', md: 'flex-end' }}
-      {...rest}>
-      <IconButton
-        display={{ base: 'flex', md: 'none' }}
-        onClick={onOpen}
-        variant="outline"
-        aria-label="open menu"
-        icon={<FiMenu />}
-      />
+          <Box padding={"5px 0px"}>
+            <Divider />
+          </Box>
+          <Tab
+            ref={accountRef}
+            mb={"5px"}
+            fontWeight={"bold"}
+            borderRadius={"5px"}
+            // transition={"0.8s"}
+            _selected={{
+              color: "white",
+              bgGradient: "linear(to-l,  pink.800, blue.600)",
+              transform: "scale(1.05)",
+              transition: "0.2s",
+            }}
+            border={"none"}
+            _focus={{ outline: "none" }}>
+            Account Info
+          </Tab>
+          <Link to={"/"}>
+            {" "}
+            <Button
+              fontWeight={"bold"}
+              width={"100%"}
+              mt={"5px"}
+              variant={"solid"}
+              borderRadius={"5px"}
+              colorScheme={"red"}
+              _focus={{ outline: "none" }}
+              border={"none"}>
+              Logout
+            </Button>
+          </Link>
+        </TabList>
 
-      <Text
-        display={{ base: 'flex', md: 'none' }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold">
-        Dashboard
-      </Text>
+        <TabPanels pl={{ md: "32%", lg: "21%" }}>
+          <TabPanel p={0}>
+            <Dashboard />
+          </TabPanel>
+          {/* <TabPanel p={0}>
+            <Products />
+          </TabPanel>
+          <TabPanel p={0}>
+            <AddProducts />
+          </TabPanel>
+          <TabPanel p={0}>
+            <Customers />
+          </TabPanel>
 
-      <HStack spacing={{ base: '0', md: '6' }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
+          <TabPanel p={0}>
+            <AccountInfo />
+          </TabPanel> */}
+        </TabPanels>
+      </Tabs>
+
+      {/* small screen navbars */}
+      <Box
+        display={{ base: "flex", md: "none" }}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        padding={"10px"}
+        bgGradient="linear(to-l,  pink.200, blue.300)"
+        color={"black"}
+        position={"fixed"}
+        width={"100%"}
+        top={0}
+        left={0}>
+        <AdminDrawer
+          orderRef={orderRef}
+          dashboardRef={dashboardRef}
+          customerRef={customerRef}
+          // discountRef={discountRef}
+          prodRef={prodRef}
         />
-        <Flex alignItems={'center'}>
-          <Menu>
-            <MenuButton
-              py={2}
-              transition="all 0.3s"
-              _focus={{ boxShadow: 'none' }}>
-              <HStack>
-                <Avatar
-                  size={'sm'}
-                  src={
-                    'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                  }
-                />
-                <VStack
-                  display={{ base: 'none', md: 'flex' }}
-                  alignItems="flex-start"
-                  spacing="1px"
-                  ml="2">
-                  <Text fontSize="sm">Justina Clark</Text>
-                  <Text fontSize="xs" color="gray.600">
-                    Admin
-                  </Text>
-                </VStack>
-                <Box display={{ base: 'none', md: 'flex' }}>
-                  <FiChevronDown />
-                </Box>
-              </HStack>
+        <Box>
+          <Menu bgGradient="linear(to-l,  pink.200, blue.300)">
+            <MenuButton>
+              <Avatar src={admin.Image} name={admin.Name}></Avatar>
             </MenuButton>
-            <MenuList
-              bg={useColorModeValue('white', 'gray.900')}
-              borderColor={useColorModeValue('gray.200', 'gray.700')}>
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
+            <MenuList border={"1px solid #27293a"}>
+              <MenuItem bgGradient="linear(to-l,  pink.200, blue.300)">
+                <Box
+                  onClick={() => {
+                    accountRef.current.click();
+                  }}
+                  display={"flex"}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                  fontSize={"2xl"}>
+                  {" "}
+                  <AiFillInfoCircle />{" "}
+                  <Text ml={"20px"} fontSize={"md"}>
+                    Account Info
+                  </Text>
+                </Box>
+              </MenuItem>
               <MenuDivider />
-              <MenuItem onClick={() => {
-                  navigate("/")
-                  toast({
-                    title: "Dashboard Logout !!!",
-                    status: "error",
-                    duration: 3000,
-                    position: "top",
-                    isClosable: true,
-                  });
-              }}>Sign out</MenuItem>
+              <MenuItem
+                bgGradient="linear(to-l,  pink.200, blue.300)"
+                color={"red.600"}>
+                <Box
+                  display={"flex"}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                  fontSize={"2xl"}>
+                  {" "}
+                  <FiLogOut />{" "}
+                  <Link to={"/"}>
+                    {" "}
+                    <Text ml={"20px"} fontSize={"md"}>
+                      Logout
+                    </Text>
+                  </Link>
+                </Box>
+              </MenuItem>
             </MenuList>
           </Menu>
-        </Flex>
-      </HStack>
-    </Flex>
+        </Box>
+      </Box>
+    </>
   );
 };
+
+export default AdminMenu;
