@@ -23,6 +23,7 @@ import AdminDrawer from "./AdminDrawer";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
+import { Products } from "./Products";
 
 const AdminMenu = () => {
   const prodRef = useRef();
@@ -50,14 +51,11 @@ const AdminMenu = () => {
           top={0}
           left={0}
           h={"100vh"}>
-          <Box width={"50%"} m={"auto"} mt={0} mb={0}>
-            {/* <Image alt="logo" src={image}></Image> */}
-          </Box>
           <Box textAlign={"center"} mt={"20px"} mb={"20px"}>
             <Avatar
               size={"xl"}
               src="https://avatars.githubusercontent.com/u/112753795?v=4"></Avatar>
-            <Text>{"Suraj"}</Text>
+            <Text>{"Suraj Singh"}</Text>
             <Text color={"pink.700"} fontWeight={"bold"}>
               {"nhb668912@gmail.com"}
             </Text>
@@ -94,7 +92,7 @@ const AdminMenu = () => {
             }}
             border={"none"}
             _focus={{ outline: "none" }}>
-            Products
+            All Data
           </Tab>
           <Tab
             ref={orderRef}
@@ -110,7 +108,7 @@ const AdminMenu = () => {
             }}
             border={"none"}
             _focus={{ outline: "none" }}>
-            Add New Products
+            Add New Data
           </Tab>
           <Tab
             ref={customerRef}
@@ -167,6 +165,9 @@ const AdminMenu = () => {
         <TabPanels pl={{ md: "32%", lg: "21%" }}>
           <TabPanel p={0}>
             <Dashboard />
+          </TabPanel>{" "}
+          <TabPanel p={0}>
+            <Products />
           </TabPanel>
           {/* <TabPanel p={0}>
             <Products />
