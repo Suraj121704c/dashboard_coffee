@@ -28,6 +28,7 @@ import AccountInfo from "./AccountInfo";
 import Users from "./Users";
 import Add from "./Add";
 import Calender from "./calender";
+import Email from "./Email";
 
 const AdminMenu = () => {
   const prodRef = useRef();
@@ -148,6 +149,23 @@ const AdminMenu = () => {
             Calender
           </Tab>
 
+          <Tab
+            ref={customerRef}
+            mb={"5px"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            // transition={"0.8s"}
+            _selected={{
+              color: "white",
+              bgGradient: "linear(to-l,  pink.800, blue.600)",
+              transform: "scale(1.05)",
+              transition: "0.2s",
+            }}
+            border={"none"}
+            _focus={{ outline: "none" }}>
+            Email
+          </Tab>
+
           <Box padding={"5px 0px"}>
             <Divider />
           </Box>
@@ -198,6 +216,9 @@ const AdminMenu = () => {
           </TabPanel>
           <TabPanel p={0}>
             <Calender />
+          </TabPanel>
+          <TabPanel p={0}>
+            <Email />
           </TabPanel>
           <TabPanel p={0}>
             <AccountInfo />

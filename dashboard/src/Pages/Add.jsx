@@ -47,11 +47,11 @@ const Add = () => {
       )
       .then((res) => {
         console.log(res);
-        alert(`A new data has been created...`)
+        alert(`A new data has been created...`);
       })
       .catch((err) => {
         console.log(err);
-        alert(`something went wrong...`)
+        alert(`something went wrong...`);
       });
   };
 
@@ -70,7 +70,8 @@ const Add = () => {
           margin: "30px auto",
           width: "400px",
           boxShadow:
-            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
+            "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+          borderRadius : "20px",
           padding: "20px",
         }}
         onSubmit={handleSubmit}>
