@@ -43,7 +43,14 @@ const Calender = () => {
         defaultDate={new Date()}
         defaultView="month"
         events={eventsData}
-        style={{ height: "100vh" , marginTop: "30px" }}
+        style={{
+          height: "100vh",
+          marginTop: "30px",
+          boxShadow:
+            "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset",
+          borderRadius: "20px",
+          padding: "30px",
+        }}
         onSelectEvent={(event) => alert(event.title)}
         onSelectSlot={handleSelect}
       />
