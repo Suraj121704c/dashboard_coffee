@@ -83,7 +83,9 @@ const Email = () => {
                 isClosable: true,
                 position: "top",
               })
-            }>
+    
+            }
+            mt={"10px"}>
             Submit
           </Button>
         </form>
