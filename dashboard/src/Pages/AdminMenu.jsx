@@ -201,7 +201,7 @@ const AdminMenu = () => {
           </Link>
         </TabList>
 
-        <TabPanels pl={{ md: "32%", lg: "21%" }}>
+        <TabPanels pl={{ md: "32%", lg: "20%" }}>
           <TabPanel p={0}>
             <Dashboard />
           </TabPanel>{" "}
