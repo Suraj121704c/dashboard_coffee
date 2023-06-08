@@ -71,7 +71,7 @@ export const Products = () => {
       <Heading>Data</Heading>
       <Text color={"#00b5b8"}>List of Data</Text>
 
-      <Box mt={"20px"}>
+      <Box width={"300px"} m={"20px auto"}>
         <Center>
           <Input
             placeholder="search...."
@@ -88,6 +88,8 @@ export const Products = () => {
           <Button onClick={(e) => setPage(page + 1)}>Next</Button>
         </Box>
       </Box>
+
+      {/* <Box></Box> */}
 
       <Box mt={"20px"}>
         {data.length === 0 ? (

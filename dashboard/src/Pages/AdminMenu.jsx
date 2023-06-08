@@ -163,7 +163,7 @@ const AdminMenu = () => {
             }}
             border={"none"}
             _focus={{ outline: "none" }}>
-            Email
+            Contact Us
           </Tab>
 
           <Box padding={"5px 0px"}>
