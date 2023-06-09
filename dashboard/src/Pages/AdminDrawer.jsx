@@ -18,7 +18,9 @@ const AdminDrawer = ({
   orderRef,
   dashboardRef,
   customerRef,
-  discountRef,
+  calenderRef,
+  contactRef,
+  adminRef,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -44,7 +46,7 @@ const AdminDrawer = ({
           <DrawerCloseButton fontSize={"xl"} />
           <DrawerBody fontSize={"2xl"} textTransform={"upperCase"}>
             <Box
-              mt={"160px"}
+              mt={"100px"}
               p={"10px"}
               _hover={{ backgroundColor: "blue.500" }}
               onClick={() => {
@@ -61,7 +63,7 @@ const AdminDrawer = ({
                 onClose();
               }}
               _hover={{ backgroundColor: "blue.500" }}>
-              Listings
+              All Data
             </Box>
             <Box
               mt={"20px"}
@@ -71,7 +73,7 @@ const AdminDrawer = ({
                 onClose();
               }}
               _hover={{ backgroundColor: "blue.500" }}>
-              Orders
+              Add New Data
             </Box>
             <Box
               mt={"20px"}
@@ -82,6 +84,38 @@ const AdminDrawer = ({
               }}
               _hover={{ backgroundColor: "blue.500" }}>
               Customers
+            </Box>
+            <Box
+              mt={"20px"}
+              p={"10px"}
+              onClick={() => {
+                calenderRef.current.click();
+                onClose();
+              }}
+              _hover={{ backgroundColor: "blue.500" }}>
+              Calender
+            </Box>
+
+            <Box
+              mt={"20px"}
+              p={"10px"}
+              onClick={() => {
+                contactRef.current.click();
+                onClose();
+              }}
+              _hover={{ backgroundColor: "blue.500" }}>
+              Contact
+            </Box>
+
+            <Box
+              mt={"20px"}
+              p={"10px"}
+              onClick={() => {
+                adminRef.current.click();
+                onClose();
+              }}
+              _hover={{ backgroundColor: "blue.500" }}>
+              Admin
             </Box>
           </DrawerBody>
         </DrawerContent>

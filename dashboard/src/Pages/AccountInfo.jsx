@@ -29,7 +29,7 @@ import {
     const [details, setDetails] = useState({
       Name: "Suraj Singh",
       EmailId: "nhb668912@gmail.com",
-      Phone: "9721253377",
+      Telegram: "9721253377",
       Password: "suraj",
     });
     const [show, setShow] = useState(false);
@@ -75,7 +75,7 @@ import {
           >
             <Input color={"gray.600"} readOnly value={details.Name}></Input>
             <Input color={"gray.600"} readOnly value={details.EmailId}></Input>
-            <Input color={"gray.600"} readOnly value={details.Phone}></Input>
+            <Input color={"gray.600"} readOnly value={details.Telegram}></Input>
             <InputGroup size="md">
               <Input
                 color={"gray.600"}

@@ -36,6 +36,7 @@ const Email = () => {
             Email Address
           </label>
           <br />
+          <br />
           {/* <input
             id="email"
             type="email"
@@ -50,6 +51,8 @@ const Email = () => {
             name="email"
           />
           <br />
+      
+
           <ValidationError prefix="Email" field="email" errors={state.errors} />
           <label
             htmlFor="email"
@@ -61,6 +64,8 @@ const Email = () => {
             Type your message here
           </label>
           <br />
+          <br />
+
           <Textarea id="message" name="message" placeholder="write here..." />
           <ValidationError
             prefix="Message"

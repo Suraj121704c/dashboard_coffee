@@ -36,6 +36,9 @@ const AdminMenu = () => {
   const customerRef = useRef();
   const orderRef = useRef();
   const accountRef = useRef();
+  const calenderRef = useRef();
+  const contactRef = useRef();
+  const adminRef = useRef();
 
   const [admin, setAdmin] = useState([]);
 
@@ -133,7 +136,7 @@ const AdminMenu = () => {
           </Tab>
 
           <Tab
-            ref={customerRef}
+            ref={calenderRef}
             mb={"5px"}
             borderRadius={"5px"}
             fontWeight={"bold"}
@@ -150,7 +153,7 @@ const AdminMenu = () => {
           </Tab>
 
           <Tab
-            ref={customerRef}
+            ref={contactRef}
             mb={"5px"}
             borderRadius={"5px"}
             fontWeight={"bold"}
@@ -170,7 +173,7 @@ const AdminMenu = () => {
             <Divider />
           </Box>
           <Tab
-            ref={accountRef}
+            ref={adminRef}
             mb={"5px"}
             fontWeight={"bold"}
             borderRadius={"5px"}
@@ -257,6 +260,9 @@ const AdminMenu = () => {
           customerRef={customerRef}
           // discountRef={discountRef}
           prodRef={prodRef}
+          calenderRef={calenderRef}
+          contactRef={contactRef}
+          adminRef={adminRef}
         />
         <Box>
           <Menu bgGradient="linear(to-l,  pink.200, blue.300)">
