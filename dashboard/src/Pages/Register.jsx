@@ -27,10 +27,10 @@ const Register = () => {
       email,
       pass,
     };
-    console.log(userDetails);
+    // console.log(userDetails);
     axios({
       method: "post",
-      url: "https://red-crazy-earthworm.cyclic.app/users/register",
+      url: "https://lively-pink-snail.cyclic.app/users/register",
       data: userDetails,
     })
       .then((res) => {

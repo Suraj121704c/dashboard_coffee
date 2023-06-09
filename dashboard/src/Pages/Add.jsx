@@ -36,7 +36,7 @@ const Add = () => {
     console.log(formData);
     axios
       .post(
-        `https://red-crazy-earthworm.cyclic.app/products/create`,
+        `https://lively-pink-snail.cyclic.app/products/create`,
         [formData],
         {
           headers: {

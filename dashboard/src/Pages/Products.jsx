@@ -22,7 +22,7 @@ export const Products = () => {
   function fetchData() {
     axios
       .get(
-        `https://red-crazy-earthworm.cyclic.app/products?page=${page}&limit=15`,
+        `https://lively-pink-snail.cyclic.app/products?page=${page}&limit=15`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -46,7 +46,7 @@ export const Products = () => {
     setTitle(e.target.value);
     axios
       .get(
-        `https://red-crazy-earthworm.cyclic.app/products?title=${title}&limit=15&page=${page}`,
+        `https://lively-pink-snail.cyclic.app/products?title=${title}&limit=15&page=${page}`,
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -64,7 +64,7 @@ export const Products = () => {
 
   function handleSort1(e) {
     axios
-      .get(`https://red-crazy-earthworm.cyclic.app/products?s=${e}`, {
+      .get(`https://lively-pink-snail.cyclic.app/products?s=${e}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -80,7 +80,7 @@ export const Products = () => {
 
   function handleSort2(e) {
     axios
-      .get(`https://red-crazy-earthworm.cyclic.app/products?i=${e}`, {
+      .get(`https://lively-pink-snail.cyclic.app/products?i=${e}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -96,7 +96,7 @@ export const Products = () => {
 
   function handleSort3(e) {
     axios
-      .get(`https://red-crazy-earthworm.cyclic.app/products?l=${e}`, {
+      .get(`https://lively-pink-snail.cyclic.app/products?l=${e}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -112,7 +112,7 @@ export const Products = () => {
 
   function handleSort4(e) {
     axios
-      .get(`https://red-crazy-earthworm.cyclic.app/products?r=${e}`, {
+      .get(`https://lively-pink-snail.cyclic.app/products?r=${e}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -128,7 +128,7 @@ export const Products = () => {
 
   function handleFilter1(e) {
     axios
-      .get(`https://red-crazy-earthworm.cyclic.app/products?topic=${e}`, {
+      .get(`https://lively-pink-snail.cyclic.app/products?topic=${e}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -144,7 +144,7 @@ export const Products = () => {
 
   function handleFilter2(e) {
     axios
-      .get(`https://red-crazy-earthworm.cyclic.app/products?sector=${e}`, {
+      .get(`https://lively-pink-snail.cyclic.app/products?sector=${e}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -160,7 +160,7 @@ export const Products = () => {
 
   function handleFilter3(e){
     axios
-      .get(`https://red-crazy-earthworm.cyclic.app/products?region=${e}`, {
+      .get(`https://lively-pink-snail.cyclic.app/products?region=${e}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -176,7 +176,7 @@ export const Products = () => {
 
   function handleFilter4(e){
     axios
-      .get(`https://red-crazy-earthworm.cyclic.app/products?country=${e}`, {
+      .get(`https://lively-pink-snail.cyclic.app/products?country=${e}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
@@ -193,7 +193,7 @@ export const Products = () => {
 
   function handleFilter5(e){
     axios
-    .get(`https://red-crazy-earthworm.cyclic.app/products?pestle=${e}`, {
+    .get(`https://lively-pink-snail.cyclic.app/products?pestle=${e}`, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
@@ -209,7 +209,7 @@ export const Products = () => {
 
   function handleFilter6(e){
     axios
-    .get(`https://red-crazy-earthworm.cyclic.app/products?source=${e}`, {
+    .get(`https://lively-pink-snail.cyclic.app/products?source=${e}`, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },

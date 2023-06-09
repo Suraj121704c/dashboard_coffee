@@ -26,7 +26,7 @@ const AdminLogin = () => {
     console.log(userDetails)
     axios({
       method: "post",
-      url: "https://red-crazy-earthworm.cyclic.app/users/login",
+      url: "https://lively-pink-snail.cyclic.app/users/login",
       data: userDetails,
     })
       .then((res) => {

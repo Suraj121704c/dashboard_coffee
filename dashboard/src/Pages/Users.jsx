@@ -16,7 +16,7 @@ const Users = () => {
 
   useEffect(() => {
     axios
-      .get("https://red-crazy-earthworm.cyclic.app/users")
+      .get("https://lively-pink-snail.cyclic.app/users")
       .then((res) => {
         setData(res.data);
       })
